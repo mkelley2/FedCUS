@@ -6,6 +6,7 @@
     require_once __DIR__."/../src/BuyItem.php";
     require_once __DIR__."/../src/SellItem.php";
 
+    $app = new Silex\Application();
     // $server = 'mysql:host=localhost:8889;dbname=fedcus';
     // $username = 'root';
     // $password = 'root';
@@ -22,7 +23,6 @@
     );
     $DB = $app['pdo'];
 
-    $app = new Silex\Application();
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
         'twig.path' => __DIR__.'/../web/views'
     ));
