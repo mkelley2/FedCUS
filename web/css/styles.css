@@ -1,4 +1,4 @@
-.tbl-del, .player-edit, .add-item {
+.tbl-del, .player-edit, .buy-edit, .sell-edit, .add-item, .float-btn {
   float: right;
 }
 
@@ -10,6 +10,19 @@
   width: 5%;
 }
 
+.button-col {
+  width: 20%;
+}
+
 .al_right {
   text-align: right;
+}
+
+.inner-table {
+  margin-bottom: 0px;
+}
+
+.blue {
+  background-color: darkgrey;
+  color: black;
 }

@@ -74,9 +74,43 @@
             return $returned_player;
         }
         
-        function findItems()
+        function findBuyItems()
         {
-            $found_items = Item::getAll();
+            $found_items = BuyItem::getAll();
+            $returned_item = [];
+
+            foreach($found_items as $item)
+            {
+                $new_item = $item->getPlayerId();
+
+                if($this->getId() == $new_item){
+                    array_push($returned_item, $item);
+                }
+
+            }
+            return $returned_item;
+        }
+        
+        function findSellItems()
+        {
+            $found_items = SellItem::getAll();
+            $returned_item = [];
+
+            foreach($found_items as $item)
+            {
+                $new_item = $item->getPlayerId();
+
+                if($this->getId() == $new_item){
+                    array_push($returned_item, $item);
+                }
+
+            }
+            return $returned_item;
+        }
+        
+        function findRivens()
+        {
+            $found_items = Riven::getAll();
             $returned_item = [];
 
             foreach($found_items as $item)
@@ -94,7 +128,8 @@
         static function deleteAll(){
             $GLOBALS['DB']->exec("DELETE FROM players;");
             $GLOBALS['DB']->exec("DELETE FROM rivens;");
-            $GLOBALS['DB']->exec("DELETE FROM items;");
+            $GLOBALS['DB']->exec("DELETE FROM sell_items;");
+            $GLOBALS['DB']->exec("DELETE FROM buy_items;");
         }
 
 
