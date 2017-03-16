@@ -66,5 +66,7 @@ $(document).ready(function() {
     });
   });
   
-  
+  $(".header-row").click(function(){
+    $(this).next().toggle();
+  });
 });

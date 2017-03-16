@@ -10,7 +10,7 @@
 
     $app['debug']=true;
 
-    // $server = 'mysql:host=localhost:8889;dbname=forum';
+    // $server = 'mysql:host=localhost:8889;dbname=fedcus';
     // $username = 'root';
     // $password = 'root';
     // $DB = new PDO($server, $username, $password);
