@@ -88,6 +88,40 @@
 
         return $app->redirect("/");
     });
+    
+    $app->post("/add-riven", function() use ($app)
+    {
+        $owner = Player::find($_POST['item_owner']);
+        $stat1 = $_POST['item_stat1'];
+        $stat2 = $_POST['item_stat2'];
+        $stat3 = $_POST['item_stat3'];
+        $stat4 = $_POST['item_stat4'];
+        if($stat1 === ""){
+          $stat1 = "N/A";
+        }
+        if($stat2 === ""){
+          $stat2 = "N/A";
+        }
+        if($stat3 === ""){
+          $stat3 = "N/A";
+        }
+        if($stat4 === ""){
+          $stat4 = "N/A";
+        }
+        
+        $new_riven = new Riven(filter_var($_POST['riven_name'], FILTER_SANITIZE_MAGIC_QUOTES), $stat1, $stat2, $stat3, $stat4, $owner->getId());
+        $new_riven->save();
+        
+
+        return $app->redirect("/");
+    });
+    
+    $app->delete("/delete-riven/{id}", function($id) use ($app){
+        $item = Riven::find($id);
+        $item->delete();
+
+        return $app->redirect("/");
+    });
 
     return $app;
 ?>

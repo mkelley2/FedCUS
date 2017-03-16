@@ -116,7 +116,7 @@
                                 <th>Stat 3:</th>
                                 <th>Stat 4:</th>
                                 <th class="button-col">
-                                  <button type="button" class="btn btn-xs btn-success add-item sell-item" data-toggle="modal" data-target="#buyModal" value="{{player.getId}}">Add Riven</button>
+                                  <button type="button" class="btn btn-xs btn-success add-item sell-item" data-toggle="modal" data-target="#rivenModal" value="{{player.getId}}">Add Riven</button>
                                 </th>
                               </tr>
                               
@@ -128,13 +128,13 @@
                               <tr>
                                 <td class="count-col">{{rivencount}}</td>
                                 <td>{{item.getName}}</td>
-                                <td class="al_right">{{item.getStat1}}</td>
-                                <td class="al_right">{{item.getStat2}}</td>
-                                <td class="al_right">{{item.getStat3}}</td>
-                                <td class="al_right">{{item.getStat4}}</td>
+                                <td>{{item.getStat1}}</td>
+                                <td>{{item.getStat2}}</td>
+                                <td>{{item.getStat3}}</td>
+                                <td>{{item.getStat4}}</td>
                                 <td class="button-col">
                                   <!-- <button type="button" class="btn btn-xs btn-info riven-edit" value="{{item.getId}}">Edit</button> -->
-                                  <form class="form-group tbl-del" action="/delete-sell-item/{{item.getId}}" method="post">
+                                  <form class="form-group tbl-del" action="/delete-riven/{{item.getId}}" method="post">
                                     <input type="hidden" name="_method" value="delete">
                                     <button type="submit" class="btn btn-xs btn-danger" name="button">Remove</button>
                                   </form>
@@ -163,7 +163,47 @@
             </form>
         </div>
 
-      <!-- Item Modal -->
+      <!-- Riven Modal -->
+      <div class="modal fade" id="rivenModal" tabindex="-1" role="dialog" aria-labelledby="rivenModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content form-group">
+            <form class="form-group" action="/add-riven" method="post">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Enter Item Info</h4>
+              </div>
+              <div class="modal-body">
+                    <div class="form-group">
+                      <script type="text/javascript">
+                      $('#rivenModal').on('show.bs.modal', function (e) {
+                        var invoker = $(e.relatedTarget);
+                        var owner = invoker.val();
+                        document.getElementById("riven_owner").value = owner;
+                        });
+                      </script>
+                        <label class="control-label" for="riven_name">Name:</label>
+                        <input class="form-control" name="riven_name" id="riven_name" required>
+                        <label class="control-label" for="item_stat1">Stat 1:</label>
+                        <input class="form-control" name="item_stat1" id="item_stat1">
+                        <label class="control-label" for="item_stat2">Stat 2:</label>
+                        <input class="form-control" name="item_stat2" id="item_stat2">
+                        <label class="control-label" for="item_stat3">Stat 3:</label>
+                        <input class="form-control" name="item_stat3" id="item_stat3">
+                        <label class="control-label" for="item_stat4">Stat 4:</label>
+                        <input class="form-control" name="item_stat4" id="item_stat4">
+                        <input type='hidden' name="item_owner" id="riven_owner">
+                    </div>
+              </div>
+            <div class="modal-footer">
+              <button class="btn btn-primary btn-success" type="submit" name="button">Submit Riven</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    
+      <!-- item Modal -->
       <div class="modal fade" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="buyModalLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content form-group">
@@ -177,47 +217,6 @@
                       <script type="text/javascript">
                       $('#buyModal').on('show.bs.modal', function (e) {
                         var invoker = $(e.relatedTarget);
-                        var owner = invoker.val();
-                        document.getElementById("item_owner").value = owner;
-                        });
-                      </script>
-                        <label class="control-label" for="item_name">Name:</label>
-                        <input class="form-control" name="item_name" id="item_name" required>
-                        <label class="control-label" for="item_stat1">Stat 1:</label>
-                        <input class="form-control" name="item_stat1" id="item_stat1">
-                        <label class="control-label" for="item_stat2">Stat 2:</label>
-                        <input class="form-control" name="item_stat2" id="item_stat2">
-                        <label class="control-label" for="item_stat3">Stat 3:</label>
-                        <input class="form-control" name="item_stat3" id="item_stat3">
-                        <label class="control-label" for="item_stat4">Stat 4:</label>
-                        <input class="form-control" name="item_stat4" id="item_stat4">
-                        <input type='hidden' name="item_owner" id="item_owner">
-                    </div>
-              </div>
-            <div class="modal-footer">
-              <button class="btn btn-primary btn-success" type="submit" name="button">Submit Item</button>
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
-    
-      <!-- Riven Modal -->
-      <div class="modal fade" id="rivenModal" tabindex="-1" role="dialog" aria-labelledby="rivenModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content form-group">
-            <form class="form-group" action="/add-item" method="post">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Enter Item Info</h4>
-              </div>
-              <div class="modal-body">
-                    <div class="form-group">
-                      <script type="text/javascript">
-                      $('#buyModal').on('show.bs.modal', function (e) {
-                        var invoker = $(e.relatedTarget);
-                        console.log(invoker.val());
                         var presplit = invoker.val();
                         var split = presplit.split("-");
                         var owner = split[1];

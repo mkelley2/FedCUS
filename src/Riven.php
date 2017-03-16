@@ -76,7 +76,7 @@
                     return false;
                 }
             }
-            $GLOBALS['DB']->exec("INSERT INTO rivens (name, player_id, stat1, stat2, stat3, stat4) VALUES ('{$this->name}', '{$this->stat1}', '{$this->stat2}', '{$this->stat3}', '{$this->stat4}', {$this->player_id})");
+            $GLOBALS['DB']->exec("INSERT INTO rivens (name, stat1, stat2, stat3, stat4, player_id) VALUES ('{$this->name}', '{$this->stat1}', '{$this->stat2}', '{$this->stat3}', '{$this->stat4}', {$this->player_id})");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
         
@@ -105,8 +105,8 @@
                 $riven_stat3= $riven['stat3'];
                 $riven_stat4= $riven['stat4'];
                 $riven_player = $riven['player_id'];
-                $riven_id = $riven['id'];
-                $new_riven = new Riven($riven_name, $riven_stat1, $riven_stat2, $riven_stat3, $riven_stat4, $riven_player);
+                $riven_id = $riven['riven_id'];
+                $new_riven = new Riven($riven_name, $riven_stat1, $riven_stat2, $riven_stat3, $riven_stat4, $riven_player, $riven_id);
                 array_push($rivens, $new_riven);
             }
             return $rivens;
