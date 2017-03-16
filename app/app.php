@@ -7,7 +7,10 @@
     require_once __DIR__."/../src/SellItem.php";
 
     $app = new Silex\Application();
-    // $server = 'mysql:host=localhost:8889;dbname=fedcus';
+
+    $app['debug']=true;
+
+    // $server = 'mysql:host=localhost:8889;dbname=forum';
     // $username = 'root';
     // $password = 'root';
     // $DB = new PDO($server, $username, $password);
@@ -22,12 +25,6 @@
       )
     );
     $DB = $app['pdo'];
-
-    $app->register(new Silex\Provider\TwigServiceProvider(), array(
-        'twig.path' => __DIR__.'/../web/views'
-    ));
-
-    $app['debug'] = true;
 
     use Symfony\Component\HttpFoundation\Request;
     Request::enableHttpMethodParameterOverride();
