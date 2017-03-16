@@ -43,6 +43,9 @@
         function delete()
         {
             $GLOBALS['DB']->exec("DELETE FROM players WHERE player_id = {$this->id};");
+            $GLOBALS['DB']->exec("DELETE FROM rivens WHERE player_id = {$this->id};");
+            $GLOBALS['DB']->exec("DELETE FROM buy_items WHERE player_id = {$this->id};");
+            $GLOBALS['DB']->exec("DELETE FROM sell_items WHERE player_id = {$this->id};");
         }
         
         static function getAll(){
