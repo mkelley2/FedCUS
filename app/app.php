@@ -34,6 +34,7 @@
 
     $app->get("/" , function() use ($app)
     {
+      echo "help";
         return $app['twig']->render("index.html.twig", array("players" => Player::getAll()));
     });
     
