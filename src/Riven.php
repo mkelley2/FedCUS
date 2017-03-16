@@ -112,6 +112,25 @@
             return $rivens;
         }
         
+        static function getAllIncPlayer(){
+            $found_rivens = $GLOBALS['DB']->query("SELECT * FROM rivens ORDER BY name ASC;");
+            $rivens = array();
+            foreach ($found_rivens as $riven) {
+              $riven_name= $riven['name'];
+              $riven_stat1= $riven['stat1'];
+              $riven_stat2= $riven['stat2'];
+              $riven_stat3= $riven['stat3'];
+              $riven_stat4= $riven['stat4'];
+              $riven_player = $riven['player_id'];
+              $player = Player::find($riven_player);
+              
+              $riven_id = $riven['riven_id'];
+                $new_riven = array("name"=>$riven_name, "stat1"=>$riven_stat1, "stat2"=>$riven_stat2, "stat3"=>$riven_stat3, "stat4"=>$riven_stat4, "player"=>$player->getName());
+                array_push($rivens, $new_riven);
+            }
+            return $rivens;
+        }
+        
         static function find($search_id)
         {
             $found_rivens = Riven::getAll();

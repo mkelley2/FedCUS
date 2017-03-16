@@ -47,6 +47,11 @@
     {
         return $app['twig']->render("sell.html.twig", array("players" => Player::getAll() , "sell_items" => SellItem::getAllIncPlayer()));
     });
+    
+    $app->get("/rivens" , function() use ($app)
+    {
+        return $app['twig']->render("rivens.html.twig", array("players" => Player::getAll() , "all_rivens" => Riven::getAllIncPlayer()));
+    });
 
     $app->post("/", function() use ($app)
     {
