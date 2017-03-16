@@ -1,0 +1,15 @@
+.tbl-del, .player-edit, .add-item {
+  float: right;
+}
+
+.tbl-del {
+  margin-bottom: 0px;
+}
+
+.count-col {
+  width: 5%;
+}
+
+.al_right {
+  text-align: right;
+}
