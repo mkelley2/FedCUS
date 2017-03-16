@@ -28,6 +28,10 @@
 
     use Symfony\Component\HttpFoundation\Request;
     Request::enableHttpMethodParameterOverride();
+    
+    $app->register(new Silex\Provider\TwigServiceProvider(), array(
+        'twig.path' => __DIR__.'/../web/views'
+    ));
 
     $app->get("/" , function() use ($app)
     {
