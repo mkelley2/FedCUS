@@ -66,6 +66,20 @@
             }
             return $items;
         }
+        
+        static function getAllIncPlayer(){
+            $found_items = $GLOBALS['DB']->query("SELECT * FROM sell_items ORDER BY name ASC;");
+            $items = array();
+            foreach ($found_items as $item) {
+                $item_name = $item['name'];
+                $item_count = $item['count'];
+                $item_player_id = $item['player_id'];
+                $player = Player::find($item_player_id);
+                $new_item = array("name"=>$item_name, "count"=>$item_count, "player"=>$player->getName());
+                array_push($items, $new_item);
+            }
+            return $items;
+        }
 
         function delete(){
             $GLOBALS['DB']->exec("DELETE FROM sell_items WHERE sell_item_id = {$this->getId()};");

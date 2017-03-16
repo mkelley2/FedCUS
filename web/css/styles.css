@@ -2,9 +2,9 @@
   float: right;
 }
 
-.tbl-del {
+/*.tbl-del {
   margin-bottom: 0px;
-}
+}*/
 
 .count-col {
   width: 5%;
@@ -25,4 +25,12 @@
 .blue {
   background-color: darkgrey;
   color: black;
+}
+
+.row {
+  margin: 0px;
+}
+
+.player-name {
+  font-size: 30px;
 }

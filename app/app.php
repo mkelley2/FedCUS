@@ -25,6 +25,16 @@
     {
         return $app['twig']->render("index.html.twig", array("players" => Player::getAll()));
     });
+    
+    $app->get("/looking" , function() use ($app)
+    {
+        return $app['twig']->render("buy.html.twig", array("players" => Player::getAll(), "buy_items" => BuyItem::getAllIncPlayer()));
+    });
+    
+    $app->get("/ditching" , function() use ($app)
+    {
+        return $app['twig']->render("sell.html.twig", array("players" => Player::getAll() , "sell_items" => SellItem::getAllIncPlayer()));
+    });
 
     $app->post("/", function() use ($app)
     {
