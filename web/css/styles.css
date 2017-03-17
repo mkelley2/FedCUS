@@ -42,3 +42,7 @@
 .child-tbody {
   display: none;
 }
+
+.totals {
+  font-size: .7em;
+}
