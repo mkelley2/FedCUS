@@ -34,3 +34,7 @@
 .player-name {
   font-size: 30px;
 }
+
+tbody {
+  display: none;
+}

@@ -123,6 +123,8 @@
         $stat2 = $_POST['item_stat2'];
         $stat3 = $_POST['item_stat3'];
         $stat4 = $_POST['item_stat4'];
+        $mr = $_POST['item_mr'];
+        $reroll = $_POST['item_reroll'];
         if($stat1 === ""){
           $stat1 = "N/A";
         }
@@ -135,8 +137,14 @@
         if($stat4 === ""){
           $stat4 = "N/A";
         }
+        if($mr === ""){
+          $mr = "N/A";
+        }
+        if($reroll === ""){
+          $reroll = "N/A";
+        }
         
-        $new_riven = new Riven(filter_var($_POST['riven_name'], FILTER_SANITIZE_MAGIC_QUOTES), $stat1, $stat2, $stat3, $stat4, $owner->getId());
+        $new_riven = new Riven(filter_var($_POST['riven_name'], FILTER_SANITIZE_MAGIC_QUOTES), $stat1, $stat2, $stat3, $stat4, $owner->getId(), $mr, $reroll);
         $new_riven->save();
         
 
