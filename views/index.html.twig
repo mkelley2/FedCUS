@@ -138,6 +138,8 @@
                                 <th>Stat 2:</th>
                                 <th>Stat 3:</th>
                                 <th>Stat 4:</th>
+                                <th>MR:</th>
+                                <th>Reroll Count:</th>
                                 <th class="button-col">
                                   <button type="button" class="btn btn-xs btn-success add-item sell-item" data-toggle="modal" data-target="#rivenModal" value="{{player.getId}}">Add Riven</button>
                                 </th>
@@ -155,6 +157,8 @@
                                 <td>{{item.getStat2}}</td>
                                 <td>{{item.getStat3}}</td>
                                 <td>{{item.getStat4}}</td>
+                                <td>{{item.getMR}}</td>
+                                <td>{{item.getReroll}}</td>
                                 <td class="button-col">
                                   <!-- <button type="button" class="btn btn-xs btn-info riven-edit" value="{{item.getId}}">Edit</button> -->
                                   <form class="form-group tbl-del" action="/delete-riven/{{item.getId}}" method="post">
