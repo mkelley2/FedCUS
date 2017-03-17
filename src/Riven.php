@@ -96,13 +96,13 @@
                     return false;
                 }
             }
-            $GLOBALS['DB']->exec("INSERT INTO rivens (name, stat1, stat2, stat3, stat4, MR, reroll, player_id) VALUES ('{$this->name}', '{$this->stat1}', '{$this->stat2}', '{$this->stat3}', '{$this->stat4}', '{$this->MR}', '{$this->reroll}', {$this->player_id})");
+            $GLOBALS['DB']->exec("INSERT INTO rivens (name, stat1, stat2, stat3, stat4, mr, reroll, player_id) VALUES ('{$this->name}', '{$this->stat1}', '{$this->stat2}', '{$this->stat3}', '{$this->stat4}', '{$this->MR}', '{$this->reroll}', {$this->player_id})");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
         
         function update($new_name, $new_stat1, $new_stat2, $new_stat3, $new_stat4, $new_MR, $new_reroll)
         {
-            $GLOBALS['DB']->exec("UPDATE rivens SET name = '{$new_name}', stat1 = '{$new_stat1}', stat2 = '{$new_stat2}', stat3 = '{$new_stat3}', stat4 = '{$new_stat4}', MR = '{$new_MR}', reroll = '{$new_reroll}' WHERE riven_id = {$this->getId()};");
+            $GLOBALS['DB']->exec("UPDATE rivens SET name = '{$new_name}', stat1 = '{$new_stat1}', stat2 = '{$new_stat2}', stat3 = '{$new_stat3}', stat4 = '{$new_stat4}', mr = '{$new_MR}', reroll = '{$new_reroll}' WHERE riven_id = {$this->getId()};");
             $this->setName($new_name);
             $this->setStat1($new_stat1);
             $this->setStat2($new_stat2);
@@ -126,7 +126,7 @@
                 $riven_stat2= $riven['stat2'];
                 $riven_stat3= $riven['stat3'];
                 $riven_stat4= $riven['stat4'];
-                $riven_MR= $riven['MR'];
+                $riven_MR= $riven['mr'];
                 $riven_reroll= $riven['reroll'];
                 $riven_player = $riven['player_id'];
                 $riven_id = $riven['riven_id'];
@@ -145,13 +145,13 @@
               $riven_stat2= $riven['stat2'];
               $riven_stat3= $riven['stat3'];
               $riven_stat4= $riven['stat4'];
-              $riven_MR= $riven['MR'];
+              $riven_MR= $riven['mr'];
               $riven_reroll= $riven['reroll'];
               $riven_player = $riven['player_id'];
               $player = Player::find($riven_player);
               
               $riven_id = $riven['riven_id'];
-                $new_riven = array("name"=>$riven_name, "stat1"=>$riven_stat1, "stat2"=>$riven_stat2, "stat3"=>$riven_stat3, "stat4"=>$riven_stat4, "MR"=>$riven_MR, "reroll"=>$riven_reroll, "player"=>$player->getName());
+                $new_riven = array("name"=>$riven_name, "stat1"=>$riven_stat1, "stat2"=>$riven_stat2, "stat3"=>$riven_stat3, "stat4"=>$riven_stat4, "mr"=>$riven_MR, "reroll"=>$riven_reroll, "player"=>$player->getName());
                 array_push($rivens, $new_riven);
             }
             return $rivens;
