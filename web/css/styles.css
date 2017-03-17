@@ -34,3 +34,7 @@
 .player-name {
   font-size: 30px;
 }
+
+.inner-table tbody {
+  display: none;
+}
