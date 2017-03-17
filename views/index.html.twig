@@ -33,6 +33,8 @@
               </div>
             </div>
           </nav>
+          
+          
           <div class="row">
             <form class="form-group player" action="/" method="post">
               <label for="player_name">Add a new player</label>
@@ -41,6 +43,8 @@
               <button type = "submit" class="btn btn-success">Add</button>
             </form>
           </div>
+          
+          
             <div class="row">
               {% for player in players %}
                 <table class="table table-striped table-hover ">
@@ -56,7 +60,7 @@
                       </th>
                     </tr>
                   </thead>
-                  <tbody>
+                  <tbody class="child-tbody">
                     <tr>
                       <td colspan="3">
                           <table class="table table-striped table-hover inner-table">

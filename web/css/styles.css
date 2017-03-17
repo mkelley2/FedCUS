@@ -38,3 +38,7 @@
 .inner-table tbody {
   display: none;
 }
+
+.child-tbody {
+  display: none;
+}
