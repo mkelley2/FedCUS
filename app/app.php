@@ -10,22 +10,23 @@
 
     $app['debug']=true;
 
-    $server = 'mysql:host=localhost:8889;dbname=fedcus';
-    $username = 'root';
-    $password = 'root';
-    $DB = new PDO($server, $username, $password);
-    
-    // for postgres
-    // $dbopts = parse_url(getenv('DATABASE_URL'));
-    // $app->register(new Herrera\Pdo\PdoServiceProvider(),
-    // array(
-    //   'pdo.dsn' => 'pgsql:dbname='.ltrim($dbopts["path"],'/').';host='.$dbopts["host"] . ';port=' . $dbopts["port"],
-    //   'pdo.username' => $dbopts["user"],
-    //   'pdo.password' => $dbopts["pass"]
-    //   )
-    // );
-    // $DB = $app['pdo'];
-
+    if($_SERVER['SERVER_NAME'] == "localhost"){
+      $server = 'mysql:host=localhost:8889;dbname=fedcus';
+      $username = 'root';
+      $password = 'root';
+      $DB = new PDO($server, $username, $password);
+    }else{
+      // for postgres
+      $dbopts = parse_url(getenv('DATABASE_URL'));
+      $app->register(new Herrera\Pdo\PdoServiceProvider(),
+      array(
+        'pdo.dsn' => 'pgsql:dbname='.ltrim($dbopts["path"],'/').';host='.$dbopts["host"] . ';port=' . $dbopts["port"],
+        'pdo.username' => $dbopts["user"],
+        'pdo.password' => $dbopts["pass"]
+        )
+      );
+      $DB = $app['pdo'];
+    }
     use Symfony\Component\HttpFoundation\Request;
     Request::enableHttpMethodParameterOverride();
     
