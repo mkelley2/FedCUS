@@ -89,13 +89,6 @@
         }
 
         function save(){
-
-            $all_rivens = Riven::getAll();
-            foreach ($all_rivens as $riven) {
-                if(strtolower($riven->getName()) == strtolower($this->name)){
-                    return false;
-                }
-            }
             $GLOBALS['DB']->exec("INSERT INTO rivens (name, stat1, stat2, stat3, stat4, mr, reroll, player_id) VALUES ('{$this->name}', '{$this->stat1}', '{$this->stat2}', '{$this->stat3}', '{$this->stat4}', '{$this->MR}', '{$this->reroll}', {$this->player_id})");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }

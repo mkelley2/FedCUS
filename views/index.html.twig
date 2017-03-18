@@ -17,22 +17,7 @@
       {% set modal_type = "null" %}
       
         <div class="container">
-          <h1><a href="/">FEDCUS Trading System</a></h1>
-          <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-              <div class="navbar-header">
-                <a class="navbar-brand" href="/">Home</a>
-              </div>
-
-              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-                <ul class="nav navbar-nav">
-                  <li><a href="/looking">Looking</a></li>
-                  <li><a href="/ditching">Ditching</a></li>
-                  <li><a href="/rivens">Rivens</a></li>
-                </ul>
-              </div>
-            </div>
-          </nav>
+          {% include '/components/navbar.html.twig' %}
           
           
           <div class="row">
@@ -51,7 +36,7 @@
                   <thead  class='header-row'>
                     <tr>
                       {% set total_items = player.findBuyItems|length + player.findSellItems|length + player.findRivens|length %}
-                      <th class="player-name">{{player.getName}}<span class="totals"> - {{total_items}} items</span></th>
+                      <th class="player-name"><a href='/player/{{player.getName}}'>{{player.getName}}</a><span class="totals"> - {{total_items}} items</span></th>
                       <th>
                         <button type="button" class="btn btn-xs btn-info player-edit" value="{{player.getId}}">Edit</button>
                         <form class="form-group tbl-del" action="/delete-player/{{player.getId}}" method="post">
@@ -186,89 +171,6 @@
               <button type = "submit" class="btn btn-danger">Purge All</button>
             </form> -->
         </div>
-
-      <!-- Riven Modal -->
-      <div class="modal fade" id="rivenModal" tabindex="-1" role="dialog" aria-labelledby="rivenModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content form-group">
-            <form class="form-group" action="/add-riven" method="post">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Enter Item Info</h4>
-              </div>
-              <div class="modal-body">
-                    <div class="form-group">
-                      <script type="text/javascript">
-                      $('#rivenModal').on('show.bs.modal', function (e) {
-                        var invoker = $(e.relatedTarget);
-                        var owner = invoker.val();
-                        document.getElementById("riven_owner").value = owner;
-                        });
-                      </script>
-                        <label class="control-label" for="riven_name">Name:</label>
-                        <input class="form-control" name="riven_name" id="riven_name" required>
-                        <label class="control-label" for="item_stat1">Stat 1:</label>
-                        <input class="form-control" name="item_stat1" id="item_stat1">
-                        <label class="control-label" for="item_stat2">Stat 2:</label>
-                        <input class="form-control" name="item_stat2" id="item_stat2">
-                        <label class="control-label" for="item_stat3">Stat 3:</label>
-                        <input class="form-control" name="item_stat3" id="item_stat3">
-                        <label class="control-label" for="item_stat4">Stat 4:</label>
-                        <input class="form-control" name="item_stat4" id="item_stat4">
-                        <label class="control-label" for="item_mr">MR:</label>
-                        <input class="form-control" name="item_mr" id="item_mr">
-                        <label class="control-label" for="item_reroll">Reroll:</label>
-                        <input class="form-control" name="item_reroll" id="item_reroll">
-                        <input type='hidden' name="item_owner" id="riven_owner">
-                    </div>
-              </div>
-            <div class="modal-footer">
-              <button class="btn btn-primary btn-success" type="submit" name="button">Submit Riven</button>
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
-    
-      <!-- item Modal -->
-      <div class="modal fade" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="buyModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content form-group">
-            <form class="form-group" action="/add-item" method="post">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Enter Item Info</h4>
-              </div>
-              <div class="modal-body">
-                    <div class="form-group">
-                      <script type="text/javascript">
-                      $('#buyModal').on('show.bs.modal', function (e) {
-                        var invoker = $(e.relatedTarget);
-                        var presplit = invoker.val();
-                        var split = presplit.split("-");
-                        var owner = split[1];
-                        var type = split[0];
-                        
-                        document.getElementById("modal_type").value = type;
-                        document.getElementById("item_owner").value = owner;
-                        });
-                      </script>
-                        <label class="control-label" for="item_name">Name:</label>
-                        <input class="form-control" name="item_name" id="item_name" required>
-                        <label class="control-label" for="item_count">How Many:</label>
-                        <input type="number" class="form-control" name="item_count" id="item_count">
-                        <input type='hidden' name="item_owner" id="item_owner">
-                        <input type='hidden' name="modal_type" id="modal_type">
-                    </div>
-              </div>
-            <div class="modal-footer">
-              <button class="btn btn-primary btn-success" type="submit" name="button">Submit Item</button>
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
+        {% include '/components/modal.html.twig' %}
     </body>
 </html>

@@ -43,13 +43,7 @@
         }
 
         function save(){
-            $all_items = BuyItem::getAll();
-            foreach ($all_items as $item) {
-                if(strtolower($item->getName()) == strtolower($this->name)){
-                    return false;
-                }
-            }
-            $GLOBALS['DB']->exec("INSERT INTO buy_items (name, count, player_id) VALUES ('{$this->getName()}', {$this->getCount()}, {$this->getPlayerId()})");
+          $GLOBALS['DB']->exec("INSERT INTO buy_items (name, count, player_id) VALUES ('{$this->getName()}', {$this->getCount()}, {$this->getPlayerId()})");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 

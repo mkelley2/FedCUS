@@ -77,6 +77,23 @@
             return $returned_player;
         }
         
+        static function findByName($search_id)
+        {
+            $found_players = Player::getAll();
+            $returned_player = null;
+
+            foreach($found_players as $player)
+            {
+                $new_player = $player->getName();
+
+                if($search_id == $new_player){
+                    $returned_player = $player;
+                }
+
+            }
+            return $returned_player;
+        }
+        
         function findBuyItems()
         {
             $found_items = BuyItem::getAll();

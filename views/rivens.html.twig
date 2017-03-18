@@ -15,22 +15,8 @@
     </head>
     <body>
         <div class="container">
-          <h1><a href="/">FEDCUS Trading System</a></h1>
-          <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-              <div class="navbar-header">
-                <a class="navbar-brand" href="/">Home</a>
-              </div>
-
-              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-                <ul class="nav navbar-nav">
-                  <li><a href="/looking">Looking</a></li>
-                  <li><a href="/ditching">Ditching</a></li>
-                  <li><a href="/rivens">Rivens</a></li>
-                </ul>
-              </div>
-            </div>
-          </nav>
+          {% include '/components/navbar.html.twig' %}
+          
           <h1>Rivens</h1>
           <table class="table table-striped table-hover">
             <thead>

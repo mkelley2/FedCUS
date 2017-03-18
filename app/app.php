@@ -39,6 +39,12 @@
         return $app['twig']->render("index.html.twig", array("players" => Player::getAll()));
     });
     
+    $app->get("/player/{id}", function($id) use ($app){
+        $player = Player::findByName($id);
+
+        return $app['twig']->render("player.html.twig", array("players" => Player::getAll(), "player" => $player));
+    });
+    
     $app->get("/looking" , function() use ($app)
     {
         return $app['twig']->render("buy.html.twig", array("players" => Player::getAll(), "buy_items" => BuyItem::getAllIncPlayer()));
@@ -89,6 +95,7 @@
         $owner = Player::find($_POST['item_owner']);
         $type = $_POST['modal_type'];
         $count = $_POST['item_count'];
+        $name = $owner->getName();
         if($count === ""){
           $count = 1;
         }
@@ -100,25 +107,32 @@
           $new_item->save();
         }
 
-        return $app->redirect("/");
+        return $app->redirect("/player/$name");
     });
     
     $app->delete("/delete-sell-item/{id}", function($id) use ($app){
         $item = SellItem::find($id);
+        $ownerID = $item->getPlayerId();
+        $owner = Player::find($ownerID);
+        $name = $owner->getName();
         $item->delete();
-
-        return $app->redirect("/");
+        
+        return $app->redirect("/player/$name");
     });
     
     $app->delete("/delete-buy-item/{id}", function($id) use ($app){
         $item = BuyItem::find($id);
+        $ownerID = $item->getPlayerId();
+        $owner = Player::find($ownerID);
+        $name = $owner->getName();
         $item->delete();
 
-        return $app->redirect("/");
+        return $app->redirect("/player/$name");
     });
     
     $app->post("/add-riven", function() use ($app)
     {
+        // var_dump($_POST['url']);
         $owner = Player::find($_POST['item_owner']);
         $stat1 = $_POST['item_stat1'];
         $stat2 = $_POST['item_stat2'];
@@ -144,17 +158,26 @@
         if($reroll === ""){
           $reroll = "N/A";
         }
-        
+        $name = $owner->getName();
         $new_riven = new Riven(filter_var($_POST['riven_name'], FILTER_SANITIZE_MAGIC_QUOTES), $stat1, $stat2, $stat3, $stat4, $owner->getId(), $mr, $reroll);
         $new_riven->save();
         
 
-        return $app->redirect("/");
+        return $app->redirect("/player/$name");
     });
     
     $app->delete("/delete-riven/{id}", function($id) use ($app){
         $item = Riven::find($id);
+        $ownerID = $item->getPlayerId();
+        $owner = Player::find($ownerID);
+        $name = $owner->getName();
         $item->delete();
+
+        return $app->redirect("/player/$name");
+    });
+    
+    $app->get("/delete-all", function() use ($app){
+        Player::deleteAll();
 
         return $app->redirect("/");
     });
