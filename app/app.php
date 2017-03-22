@@ -36,6 +36,7 @@
 
     $app->get("/" , function() use ($app)
     {
+      var_dump(SellItem::findMatch());
         return $app['twig']->render("index.html.twig", array("players" => Player::getAll()));
     });
     
@@ -94,16 +95,109 @@
     {
         $owner = Player::find($_POST['item_owner']);
         $type = $_POST['modal_type'];
-        $count = $_POST['item_count'];
-        $name = $owner->getName();
-        if($count === ""){
-          $count = 1;
+        $blueprint = $_POST['item_blueprint'];
+        if ($blueprint == "") {
+          $blueprint = null;
         }
+        $chassis = $_POST['item_chassis'];
+        if ($chassis == "") {
+          $chassis = null;
+        }
+        $systems = $_POST['item_systems'];
+        if ($systems == "") {
+          $systems = null;
+        }
+        $neuroptics = $_POST['item_neuroptics'];
+        if ($neuroptics == "") {
+          $neuroptics = null;
+        }
+        $barrel = $_POST['item_barrel'];
+        if ($barrel == "") {
+          $barrel = null;
+        }
+        $receiver = $_POST['item_receiver'];
+        if ($receiver == "") {
+          $receiver = null;
+        }
+        $stock = $_POST['item_stock'];
+        if ($stock == "") {
+          $stock = null;
+        }
+        $link = $_POST['item_link'];
+        if ($link == "") {
+          $link = null;
+        }
+        $lowerlimb = $_POST['item_lowerlimb'];
+        if ($lowerlimb == "") {
+          $lowerlimb = null;
+        }
+        $upperlimb = $_POST['item_upperlimb'];
+        if ($upperlimb == "") {
+          $upperlimb = null;
+        }
+        $string = $_POST['item_string'];
+        if ($string == "") {
+          $string = null;
+        }
+        $grip = $_POST['item_grip'];
+        if ($grip == "") {
+          $grip = null;
+        }
+        $blade = $_POST['item_blade'];
+        if ($blade == "") {
+          $blade = null;
+        }
+        $blade2 = $_POST['item_blade2'];
+        if ($blade2 == "") {
+          $blade2 = null;
+        }
+        $head = $_POST['item_head'];
+        if ($head == "") {
+          $head = null;
+        }
+        $handle = $_POST['item_handle'];
+        if ($handle == "") {
+          $handle = null;
+        }
+        $handle2 = $_POST['item_handle2'];
+        if ($handle2 == "") {
+          $handle2 = null;
+        }
+        $gauntlet = $_POST['item_gauntlet'];
+        if ($gauntlet == "") {
+          $gauntlet = null;
+        }
+        $gauntlet2 = $_POST['item_gauntlet2'];
+        if ($gauntlet2 == "") {
+          $gauntlet2 = null;
+        }
+        $hilt = $_POST['item_hilt'];
+        if ($hilt == "") {
+          $hilt = null;
+        }
+        $heatsink = $_POST['item_heatsink'];
+        if ($heatsink == "") {
+          $heatsink = null;
+        }
+        $disc = $_POST['item_disc'];
+        if ($disc == "") {
+          $disc = null;
+        }
+        $cerebrum = $_POST['item_cerebrum'];
+        if ($cerebrum == "") {
+          $cerebrum = null;
+        }
+        $carapace = $_POST['item_carapace'];
+        if ($carapace == "") {
+          $carapace = null;
+        }
+        $name = $owner->getName();
+        
         if($type == "buy"){
-          $new_item = new BuyItem(filter_var($_POST['item_name'], FILTER_SANITIZE_MAGIC_QUOTES), $count, $owner->getId());
+          $new_item = new BuyItem(filter_var($_POST['item_name'], FILTER_SANITIZE_MAGIC_QUOTES), $owner->getId(), $blueprint, $chassis, $systems, $neuroptics, $barrel, $receiver, $stock, $link, $lowerlimb, $upperlimb, $string, $grip, $blade, $blade2, $head, $handle, $handle2, $gauntlet, $gauntlet2, $hilt, $heatsink, $disc, $cerebrum, $carapace);
           $new_item->save();
         }else if($type == "sell"){
-          $new_item = new SellItem(filter_var($_POST['item_name'], FILTER_SANITIZE_MAGIC_QUOTES), $count, $owner->getId());
+          $new_item = new SellItem(filter_var($_POST['item_name'], FILTER_SANITIZE_MAGIC_QUOTES), $owner->getId(), $blueprint, $chassis, $systems, $neuroptics, $barrel, $receiver, $stock, $link, $lowerlimb, $upperlimb, $string, $grip, $blade, $blade2, $head, $handle, $handle2, $gauntlet, $gauntlet2, $hilt, $heatsink, $disc, $cerebrum, $carapace);
           $new_item->save();
         }
 
