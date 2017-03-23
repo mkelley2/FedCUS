@@ -540,6 +540,23 @@
           }
           return $finalArray;
         }
+        
+        function getAllItems(){
+          $found_items = $GLOBALS['DB']->query("SELECT * FROM sell_items WHERE sell_item_id = {$this->getId()} ORDER BY sell_name ASC;");
+          $return_array = [];
+          $count = 0;
+          foreach ($found_items as $object) {
+            foreach($object as $key=>$value) {
+              if($value == "on"){
+                $key = preg_replace("/[0-9]+/", "", $key);
+                $key = preg_replace("/sell_/", "", $key);
+                array_push($return_array, $key);
+              }
+            }
+          }
+          // var_dump($count);
+          return $return_array;
+        }
 
     }
 

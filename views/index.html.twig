@@ -100,6 +100,7 @@
                               <tr class="blue">
                                 <th class="count-col">#</th>
                                 <th>{{player.findSellItems|length}} thing(s) up for grabs:</th>
+                                <th>Pieces</th>
                                 <th class="button-col">
                                   <button type="button" class="btn btn-xs btn-success add-item sell-item" data-toggle="modal" data-target="#buyModal" value="sell-{{player.getId}}">Add Item</button>
                                 </th>
@@ -113,6 +114,12 @@
                               <tr>
                                 <td class="count-col">{{sellitemcount}}</td>
                                 <td>{{item.getName}}</td>
+                                <td>
+                                  {% for match in item.getAllItems %}
+                                    {{match}}
+                                  {% endfor %}
+                                </td>
+                                
                                 <td class="button-col">
                                   <!-- <button type="button" class="btn btn-xs btn-info sell-edit" value="{{item.getId}}">Edit</button> -->
                                   <form class="form-group tbl-del" action="/delete-sell-item/{{item.getId}}" method="post">
