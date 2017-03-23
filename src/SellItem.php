@@ -453,13 +453,89 @@
             buy_items.cerebrum = sell_items.sell_cerebrum or
             buy_items.carapace = sell_items.sell_carapace
           );");
-          $test = array();
+          $finalArray = array();
           foreach ($found_items as $key) {
+            $test = array();
             
-            $test["name"] = $key["name"];
-            $test["blueprint"] = $key["blueprint"];
+            if($key['name']==$key['sell_name'] && $key['player_id']!==$key['sell_player_id']){
+              $test['name']=$key['name'];
+              $test['buy_player_name'] = Player::find($key['player_id'])->getName();
+              $test['sell_player_name'] = Player::find($key['sell_player_id'])->getName();
+              if($key['blueprint']!== "" && $key['blueprint']==$key['sell_blueprint']){
+                $test['blueprint']=$key['blueprint'];  
+              }
+              if($key['chassis']!== "" && $key['chassis']==$key['sell_chassis']){
+                $test['chassis']=$key['chassis'];  
+              }
+              if($key['systems']!== "" && $key['systems']==$key['sell_systems']){
+                $test['systems']=$key['systems'];  
+              }
+              if($key['neuroptics']!== "" && $key['neuroptics']==$key['sell_neuroptics']){
+                $test['neuroptics']=$key['neuroptics'];  
+              }
+              if($key['barrel']!== "" && $key['barrel']==$key['sell_barrel']){
+                $test['barrel']=$key['barrel'];  
+              }
+              if($key['receiver']!== "" && $key['receiver']===$key['sell_receiver']){
+                $test['receiver']=$key['receiver'];  
+              }
+              if($key['stock']!== "" && $key['stock']==$key['sell_stock']){
+                $test['stock']=$key['stock'];  
+              }
+              if($key['link']!== "" && $key['link']==$key['sell_link']){
+                $test['link']=$key['link'];  
+              }
+              if($key['lowerlimb']!== "" && $key['lowerlimb']==$key['sell_lowerlimb']){
+                $test['lowerlimb']=$key['lowerlimb'];  
+              }
+              if($key['upperlimb']!== "" && $key['upperlimb']==$key['sell_upperlimb']){
+                $test['upperlimb']=$key['upperlimb'];  
+              }
+              if($key['barrel']!== "" && $key['string']==$key['sell_string']){
+                $test['string']=$key['string'];  
+              }
+              if($key['grip']!== "" && $key['grip']===$key['sell_grip']){
+                $test['grip']=$key['grip'];  
+              }
+              if($key['blade']!== "" && $key['blade']==$key['sell_blade']){
+                $test['blade']=$key['blade'];  
+              }
+              if($key['blade2']!== "" && $key['blade2']==$key['sell_blade2']){
+                $test['blade2']=$key['blade2'];  
+              }
+              if($key['head']!== "" && $key['head']==$key['sell_head']){
+                $test['head']=$key['head'];  
+              }
+              if($key['handle']!== "" && $key['handle']==$key['sell_handle']){
+                $test['handle']=$key['handle'];  
+              }
+              if($key['handle2']!== "" && $key['handle2']==$key['sell_handle2']){
+                $test['handle2']=$key['handle2'];  
+              }
+              if($key['gauntlet']!== "" && $key['gauntlet']===$key['sell_gauntlet']){
+                $test['gauntlet']=$key['gauntlet'];  
+              }
+              if($key['gauntlet2']!== "" && $key['gauntlet2']==$key['sell_gauntlet2']){
+                $test['gauntlet2']=$key['gauntlet2'];  
+              }
+              if($key['hilt']!== "" && $key['hilt']==$key['sell_hilt']){
+                $test['hilt']=$key['hilt'];  
+              }
+              if($key['disc']!== "" && $key['disc']==$key['sell_disc']){
+                $test['disc']=$key['disc'];  
+              }
+              if($key['cerebrum']!== "" && $key['cerebrum']==$key['sell_cerebrum']){
+                $test['cerebrum']=$key['cerebrum'];  
+              }
+              if($key['carapace']!== "" && $key['carapace']==$key['sell_carapace']){
+                $test['carapace']=$key['carapace'];  
+              }
+            }
+            if(count($test)>3){
+              array_push($finalArray, $test);
+            }
           }
-          return $test;
+          return $finalArray;
         }
 
     }
