@@ -347,6 +347,7 @@
             foreach ($found_items as $item) {
               $name = $item['name'];
               $player_id = $item['player_id'];
+              $player = Player::find($player_id);
               $blueprint = $item['blueprint'];
               $chassis = $item['chassis'];
               $systems = $item['systems'];
@@ -372,7 +373,8 @@
               $cerebrum = $item['cerebrum'];
               $carapace = $item['carapace'];
               $id = $item['buy_item_id'];
-              $new_item = new BuyItem($name, $player_id, $blueprint, $chassis, $systems, $neuroptics, $barrel, $receiver, $stock, $link, $lowerlimb, $upperlimb, $string, $grip, $blade, $blade2, $head, $handle, $handle2, $gauntlet, $gauntlet2, $hilt, $heatsink, $disc, $cerebrum, $carapace, $id);
+              $item = BuyItem::find($id);
+              $new_item = array('spec_item'=>$item, 'name'=>$name, 'player'=>$player->getName(), 'blueprint'=>$blueprint, 'chassis'=>$chassis, 'systems'=>$systems, 'neuroptics'=>$neuroptics, 'barrel'=>$barrel, 'receiver'=>$receiver, 'stock'=>$stock, 'link'=>$link, 'lowerlimb'=>$lowerlimb, 'upperlimb'=>$upperlimb, 'string'=>$string, 'grip'=>$grip, 'blade'=>$blade, 'blade2'=>$blade2, 'head'=>$head, 'handle'=>$handle, 'handle2'=>$handle2, 'gauntlet'=>$gauntlet, 'gauntlet2'=>$gauntlet2, 'hilt'=>$hilt, 'heatsink'=>$heatsink, 'disc'=>$disc, 'cerebrum'=>$cerebrum, 'carapace'=>$carapace);
               array_push($items, $new_item);
             }
             return $items;
@@ -425,6 +427,21 @@
 
             }
             return $returned_item;
+        }
+        
+        function getAllItems(){
+          $found_items = $GLOBALS['DB']->query("SELECT * FROM buy_items WHERE buy_item_id = {$this->getId()} ORDER BY name ASC;");
+          $return_array = [];
+          foreach ($found_items as $object) {
+            foreach($object as $key=>$value) {
+              if($value == "on"){
+                $key = preg_replace("/[0-9]+/", "", $key);
+                array_push($return_array, $key);
+              }
+            }
+          }
+          // var_dump($count);
+          return $return_array;
         }
 
     }

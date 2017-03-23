@@ -73,23 +73,27 @@ $(document).ready(function() {
   });
   
   $("#type_list").change(function(){
-    $(".check_blueprint").show();
     if($("#type_list").val()=="warframe"){
       $(".inner_check").hide();
+      $(".check_bp").show();
       $(".check_warframe").show();
       $(".check_systems").show();
     }else if($("#type_list").val()=="primary"){
       $(".inner_check").hide();
+      $(".check_bp").show();
       $(".check_gun").show();
       $(".check_bow").show();
     }else if($("#type_list").val()=="secondary"){
       $(".inner_check").hide();
+      $(".check_bp").show();
       $(".check_gun").show();
     }else if($("#type_list").val()=="melee"){
       $(".inner_check").hide();
+      $(".check_bp").show();
       $(".check_melee").show();
     }else if($("#type_list").val()=="sent"){
       $(".inner_check").hide();
+      $(".check_bp").show();
       $(".check_sentinel").show();
       $(".check_systems").show();
     }else{

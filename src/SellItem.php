@@ -347,6 +347,7 @@
             foreach ($found_items as $item) {
               $name = $item['sell_name'];
               $player_id = $item['sell_player_id'];
+              $player = Player::find($player_id);
               $blueprint = $item['sell_blueprint'];
               $chassis = $item['sell_chassis'];
               $systems = $item['sell_systems'];
@@ -372,7 +373,8 @@
               $cerebrum = $item['sell_cerebrum'];
               $carapace = $item['sell_carapace'];
               $id = $item['sell_item_id'];
-              $new_item = new SellItem($name, $player_id, $blueprint, $chassis, $systems, $neuroptics, $barrel, $receiver, $stock, $link, $lowerlimb, $upperlimb, $string, $grip, $blade, $blade2, $head, $handle, $handle2, $gauntlet, $gauntlet2, $hilt, $heatsink, $disc, $cerebrum, $carapace, $id);
+              $item = SellItem::find($id);
+              $new_item = array('spec_item'=>$item, 'name'=>$name, 'player'=>$player->getName(), 'blueprint'=>$blueprint, 'chassis'=>$chassis, 'systems'=>$systems, 'neuroptics'=>$neuroptics, 'barrel'=>$barrel, 'receiver'=>$receiver, 'stock'=>$stock, 'link'=>$link, 'lowerlimb'=>$lowerlimb, 'upperlimb'=>$upperlimb, 'string'=>$string, 'grip'=>$grip, 'blade'=>$blade, 'blade2'=>$blade2, 'head'=>$head, 'handle'=>$handle, 'handle2'=>$handle2, 'gauntlet'=>$gauntlet, 'gauntlet2'=>$gauntlet2, 'hilt'=>$hilt, 'heatsink'=>$heatsink, 'disc'=>$disc, 'cerebrum'=>$cerebrum, 'carapace'=>$carapace);
               array_push($items, $new_item);
             }
             return $items;

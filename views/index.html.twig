@@ -66,7 +66,8 @@
                             <thead class='header-row'>
                               <tr class="blue">
                                 <th class="count-col">#</th>
-                                <th>Looking For {{player.findBuyItems|length}} thing(s):</th>
+                                <th class="title-col">Looking For {{player.findBuyItems|length}} thing(s):</th>
+                                <th>Pieces:</th>
                                 <th class="button-col">
                                   <button type="button" class="btn btn-xs btn-success add-item buy-item" data-toggle="modal" data-target="#buyModal" value="buy-{{player.getId}}">Add Item</button>
                                 </th>
@@ -79,7 +80,12 @@
                               {% set itemcount = itemcount + 1%}
                               <tr>
                                 <td class="count-col">{{itemcount}}</td>
-                                <td>{{item.getName}}</td>
+                                <td class="title-col">{{item.getName}}</td>
+                                <td>
+                                  {% for match in item.getAllItems %}
+                                    <span class="label label-info">{{match}}</span>
+                                  {% endfor %}
+                                </td>
                                 <td class="button-col">
                                   <!-- <button type="button" class="btn btn-xs btn-info buy-edit" value="{{item.getId}}">Edit</button> -->
                                   <form class="form-group tbl-del" action="/delete-buy-item/{{item.getId}}" method="post">
@@ -99,7 +105,7 @@
                             <thead  class='header-row'>
                               <tr class="blue">
                                 <th class="count-col">#</th>
-                                <th>{{player.findSellItems|length}} thing(s) up for grabs:</th>
+                                <th class="title-col">{{player.findSellItems|length}} thing(s) up for grabs:</th>
                                 <th>Pieces</th>
                                 <th class="button-col">
                                   <button type="button" class="btn btn-xs btn-success add-item sell-item" data-toggle="modal" data-target="#buyModal" value="sell-{{player.getId}}">Add Item</button>
@@ -113,10 +119,10 @@
                               {% set sellitemcount = sellitemcount + 1%}
                               <tr>
                                 <td class="count-col">{{sellitemcount}}</td>
-                                <td>{{item.getName}}</td>
+                                <td class="title-col">{{item.getName}}</td>
                                 <td>
                                   {% for match in item.getAllItems %}
-                                    {{match}}
+                                    <span class="label label-success">{{match}}</span>
                                   {% endfor %}
                                 </td>
                                 

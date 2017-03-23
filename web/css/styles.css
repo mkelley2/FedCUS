@@ -10,8 +10,16 @@
   width: 5%;
 }
 
-.button-col {
-  width: 10%;
+.title-col{
+  width: 15%
+}
+
+.button-col{
+  width: 15%;
+}
+
+.name-col {
+  width: 15%;
 }
 
 .al_right {
@@ -49,4 +57,8 @@
 
 .inner_check {
   display: none;
+}
+
+.label {
+  color: black;
 }

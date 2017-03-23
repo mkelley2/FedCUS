@@ -22,9 +22,9 @@
             <thead>
               <tr class="blue">
                 <th class="count-col">#</th>
-                <th>Name:</th>
-                <th>Player:</th>
-                <th>Count:</th>
+                <th class="title-col">Name:</th>
+                <th>Pieces:</th>
+                <th class="name-col">Player:</th>
               </tr>
               
             </thead>
@@ -34,9 +34,13 @@
               {% set itemcount = itemcount + 1%}
               <tr>
                 <td class="count-col">{{itemcount}}</td>
-                <td>{{item.name}}</td>
-                <td>{{item.player}}</td>
-                <td>{{item.count}}</td>
+                <td class="title-col">{{item.name}}</td>
+                <td>
+                  {% for match in item.spec_item.getAllItems %}
+                    <span class="label label-info">{{match}}</span>
+                  {% endfor %}
+                </td>
+                <td class="name-col">{{item.player}}</td>
               </tr>
               {%endfor%}
             </tbody>
