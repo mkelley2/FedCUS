@@ -36,7 +36,6 @@
 
     $app->get("/" , function() use ($app)
     {
-      var_dump(SellItem::findMatch());
         return $app['twig']->render("index.html.twig", array("players" => Player::getAll()));
     });
     
@@ -59,6 +58,11 @@
     $app->get("/rivens" , function() use ($app)
     {
         return $app['twig']->render("rivens.html.twig", array("players" => Player::getAll() , "all_rivens" => Riven::getAllIncPlayer()));
+    });
+    
+    $app->get("/matches" , function() use ($app)
+    {
+        return $app['twig']->render("matches.html.twig", array("players" => Player::getAll() , "all_matches" => SellItem::findMatch()));
     });
 
     $app->post("/", function() use ($app)

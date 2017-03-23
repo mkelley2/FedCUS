@@ -66,78 +66,101 @@
                   document.getElementById("item_owner").value = owner;
                   });
                 </script>
+                  <select class="form-control" id="type_list" name="item_type" required>
+                    <option selected="true" disabled="disabled">Item Type</option>
+                    <option value="warframe">Warframe</option>
+                    <option value="primary">Primary</option>
+                    <option value="secondary">Secondary</option>
+                    <option value="melee">Melee</option>
+                    <option value="sent">Sentinel</option>
+                    <option value="other">Other</option>
+                  </select>
                   <label class="control-label" for="item_name">Name:</label>
                   <input class="form-control" name="item_name" id="item_name" required>
                   <div class="checkbox">
-                    <label>
-                      <input type="checkbox" name="item_blueprint" id="item_blueprint">Blueprint
-                    </label>
-                  <label>
-                    <input type="checkbox" name="item_chassis" id="item_chassis">Chassis
-                  </label>
-                  <label>
-                    <input type="checkbox" name="item_systems" id="item_systems">Systems
-                  </label>
-                  <label>
-                    <input type="checkbox" name="item_neuroptics" id="item_neuroptics">Neuroptics
-                  </label>
-                  <label>
-                    <input type="checkbox" name="item_barrel" id="item_barrel">Barrel
-                  </label>
-                  <label>
-                    <input type="checkbox" name="item_receiver" id="item_receiver">Receiver
-                  </label>
-                  <label>
-                    <input type="checkbox" name="item_stock" id="item_stock">Stock
-                  </label>
-                  <label>
-                    <input type="checkbox" name="item_lowerlimb" id="item_lowerlimb">Lowerlimb
-                  </label>
-                  <label>
-                    <input type="checkbox" name="item_upperlimb" id="item_upperlimb">Upperlimb
-                  </label>
-                  <label>
-                    <input type="checkbox" name="item_string" id="item_string">String
-                  </label>
-                  <label>
-                    <input type="checkbox" name="item_grip" id="item_grip">Grip
-                  </label>
-                  <label>
-                    <input type="checkbox" name="item_blade" id="item_blade">Blade
-                  </label>
-                  <label>
-                    <input type="checkbox" name="item_blade2" id="item_blade2">Blade2
-                  </label>
-                  <label>
-                    <input type="checkbox" name="item_head" id="item_head">Head
-                  </label>
-                  <label>
-                    <input type="checkbox" name="item_handle" id="item_handle">Handle
-                  </label>
-                  <label>
-                    <input type="checkbox" name="item_handle2" id="item_handle2">Handle2
-                  </label>
-                  <label>
-                    <input type="checkbox" name="item_gauntlet" id="item_gauntlet">Gauntlet
-                  </label>
-                  <label>
-                    <input type="checkbox" name="item_gauntlet2" id="item_gauntlet2">Gauntlet2
-                  </label>
-                  <label>
-                    <input type="checkbox" name="item_hilt" id="item_hilt">Hilt
-                  </label>
-                  <label>
-                    <input type="checkbox" name="item_heatsink" id="item_heatsink">Heatsink
-                  </label>
-                  <label>
-                    <input type="checkbox" name="item_disc" id="item_disc">Disc
-                  </label>
-                  <label>
-                    <input type="checkbox" name="item_cerebrum" id="item_cerebrum">Cerebrum
-                  </label>
-                  <label>
-                    <input type="checkbox" name="item_carapace" id="item_carapace">Carapace
-                  </label>
+                    <span class="check_blueprint inner_check">
+                      <label>
+                        <input type="checkbox" name="item_blueprint" id="item_blueprint">Blueprint
+                      </label>
+                    </span>
+                    <span class="check_warframe inner_check">
+                      <label>
+                        <input type="checkbox" name="item_chassis" id="item_chassis">Chassis
+                      </label>
+                      <label>
+                        <input type="checkbox" name="item_neuroptics" id="item_neuroptics">Neuroptics
+                      </label>
+                    </span>
+                    <span class="check_systems inner_check">
+                      <label>
+                        <input type="checkbox" name="item_systems" id="item_systems">Systems
+                      </label>
+                    </span>
+                    <span class="check_gun inner_check">
+                      <label>
+                        <input type="checkbox" name="item_barrel" id="item_barrel">Barrel
+                      </label>
+                      <label>
+                        <input type="checkbox" name="item_receiver" id="item_receiver">Receiver
+                      </label>
+                      <label>
+                        <input type="checkbox" name="item_stock" id="item_stock">Stock
+                      </label>
+                    </span>
+                    <span  class="check_bow inner_check">
+                      <label>
+                        <input type="checkbox" name="item_lowerlimb" id="item_lowerlimb">Lowerlimb
+                      </label>
+                      <label>
+                        <input type="checkbox" name="item_upperlimb" id="item_upperlimb">Upperlimb
+                      </label>
+                      <label>
+                        <input type="checkbox" name="item_string" id="item_string">String
+                      </label>
+                      <label>
+                        <input type="checkbox" name="item_grip" id="item_grip">Grip
+                      </label>
+                    </span>
+                    <span class="check_melee inner_check">
+                      <label>
+                        <input type="checkbox" name="item_blade" id="item_blade">Blade
+                      </label>
+                      <label>
+                        <input type="checkbox" name="item_blade2" id="item_blade2">Blade2
+                      </label>
+                      <label>
+                        <input type="checkbox" name="item_head" id="item_head">Head
+                      </label>
+                      <label>
+                        <input type="checkbox" name="item_handle" id="item_handle">Handle
+                      </label>
+                      <label>
+                        <input type="checkbox" name="item_handle2" id="item_handle2">Handle2
+                      </label>
+                      <label>
+                        <input type="checkbox" name="item_gauntlet" id="item_gauntlet">Gauntlet
+                      </label>
+                      <label>
+                        <input type="checkbox" name="item_gauntlet2" id="item_gauntlet2">Gauntlet2
+                      </label>
+                      <label>
+                        <input type="checkbox" name="item_hilt" id="item_hilt">Hilt
+                      </label>
+                      <label>
+                        <input type="checkbox" name="item_heatsink" id="item_heatsink">Heatsink
+                      </label>
+                      <label>
+                        <input type="checkbox" name="item_disc" id="item_disc">Disc
+                      </label>
+                    </span>
+                    <span class="check_sentinel inner_check">
+                      <label>
+                        <input type="checkbox" name="item_cerebrum" id="item_cerebrum">Cerebrum
+                      </label>
+                      <label>
+                        <input type="checkbox" name="item_carapace" id="item_carapace">Carapace
+                      </label>
+                    </span>
                 </div>
                   <input type='hidden' name="item_owner" id="item_owner">
                   <input type='hidden' name="modal_type" id="modal_type">

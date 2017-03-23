@@ -46,3 +46,7 @@
 .totals {
   font-size: .7em;
 }
+
+.inner_check {
+  display: none;
+}
