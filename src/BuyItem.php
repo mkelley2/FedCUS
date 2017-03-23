@@ -216,16 +216,16 @@
             $this->gauntlet = $gauntlet;
         }
 
-        function getGauntlet2(){
-            return $this->gauntlet2;
+        function getGauntlet(){
+            return $this->gauntlet;
         }
         
         function setGauntlet2($gauntlet2){
             $this->gauntlet2 = $gauntlet2;
         }
 
-        function getGauntlet(){
-            return $this->handle;
+        function getGauntlet2(){
+            return $this->gauntlet2;
         }
         
         function setHilt($hilt){
@@ -293,8 +293,8 @@
             '{$this->getHead()}',
             '{$this->getHandle()}',
             '{$this->getHandle2()}',
-            '{$this->getGauntlet2()}',
             '{$this->getGauntlet()}',
+            '{$this->getGauntlet2()}',
             '{$this->getHilt()}',
             '{$this->getHeatsink()}',
             '{$this->getDisc()}',    

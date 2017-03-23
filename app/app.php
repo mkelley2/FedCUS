@@ -97,6 +97,7 @@
     
     $app->post("/add-item", function() use ($app)
     {
+        
         $owner = Player::find($_POST['item_owner']);
         $type = $_POST['modal_type'];
         $blueprint = $_POST['item_blueprint'];
