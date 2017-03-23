@@ -73,6 +73,7 @@ $(document).ready(function() {
   });
   
   $("#type_list").change(function(){
+    console.log("change");
     if($("#type_list").val()=="warframe"){
       $(".inner_check").hide();
       $(".check_bp").show();
